@@ -40,6 +40,6 @@ public class Performance_Test {
             stack.add(i);
         }
         end = System.nanoTime();
-        System.out.println("LinkedList Performance Time: " + (end - start) + " ns");
+        System.out.println("Stack Performance Time: " + (end - start) + " ns");
     }
 }
