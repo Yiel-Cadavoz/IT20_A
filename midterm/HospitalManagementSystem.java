@@ -9,7 +9,6 @@ import java.util.Queue;
 class Patient {
             String name;
             int severity;
-            int arrivalOrder;
             
             public Patient(String name, int severity){
                 this.name = name;
