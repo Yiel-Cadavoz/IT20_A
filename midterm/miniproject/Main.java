@@ -17,6 +17,7 @@ public class Main {
             System.out.println("6. Borrow Book");
             System.out.println("7. Return Book");
             System.out.println("8. View Borrow Records");
+            System.out.println("9. View Activity Log"); 
             System.out.println("0. Exit");
             System.out.print("Enter choice: ");
             choice = in.nextInt();
@@ -63,6 +64,7 @@ public class Main {
                     lib.returnBook(borrower, id);
                 }
                 case 8 -> lib.viewBorrowRecords();
+                case 9 -> lib.viewActivityLog();   
                 case 0 -> {
                     System.out.println("Exiting... Goodbye!");
                     return;

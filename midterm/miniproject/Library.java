@@ -4,10 +4,10 @@ import java.util.*;
 public class Library {
 
     ArrayList<Book> books = new ArrayList<>();
-    HashSet<String> bookTitles = new HashSet<>();  // unique book titles
-    HashMap<String, LinkedList<Book>> borrowRecords = new HashMap<>();
-    Queue<Book> borrowQueue = new LinkedList<>();
-    Stack<String> actionHistory = new Stack<>();
+    HashSet<String> bookTitles = new HashSet<>(); 
+    HashMap<String, LinkedList<Book>> borrowRecords = new HashMap<>(); 
+    Queue<Book> borrowQueue = new LinkedList<>(); 
+    Stack<String> actionHistory = new Stack<>(); 
 
     // ➤ ADD BOOK
     public void addBook(String id, String title) {
@@ -15,45 +15,45 @@ public class Library {
             System.out.println("Title already exists!");
             return;
         }
-        Book b = new Book(id, title);
-        books.add(b);
-        bookTitles.add(title);
-        actionHistory.push("Added book: " + title);
-        System.out.println("Book added successfully!");
+        Book b = new Book(id, title); 
+        books.add(b);  
+        bookTitles.add(title); 
+        actionHistory.push("Added book: " + title); 
+        System.out.println("Book added successfully!"); 
     }
 
     // ➤ VIEW ALL BOOKS
-    public void viewBooks() {
-        System.out.println("\nLIBRARY BOOKS:");
-        for (Book b : books) {
+    public void viewBooks() { 
+        System.out.println("\nLIBRARY BOOKS:"); 
+        for (Book b : books) { 
             System.out.println(b.id + " | " + b.title + " | " + (b.isAvailable ? "Available" : "Borrowed"));
         }
     }
 
     // ➤ UPDATE BOOK TITLE
-    public void updateBookTitle(String id, String newTitle) {
-        for (Book b : books) {
-            if (b.id.equals(id)) {
-                if (bookTitles.contains(newTitle)) {
+    public void updateBookTitle(String id, String newTitle) { 
+        for (Book b : books) { 
+            if (b.id.equals(id)) { 
+                if (bookTitles.contains(newTitle)) { 
                     System.out.println("Title already exists!");
                     return;
                 }
                 bookTitles.remove(b.title);
-                bookTitles.add(newTitle);
-                actionHistory.push("Updated title: " + b.title + " → " + newTitle);
-                b.title = newTitle;
+                bookTitles.add(newTitle); 
+                actionHistory.push("Updated title: " + b.title + " → " + newTitle);  
+                b.title = newTitle; 
                 System.out.println("Title updated!");
                 return;
             }
         }
-        System.out.println("Book not found!");
+        System.out.println("Book not found!"); 
     }
 
     // ➤ DELETE BOOK
-    public void deleteBook(String id) {
-        for (Book b : books) {
-            if (b.id.equals(id)) {
-                books.remove(b);
+    public void deleteBook(String id) { 
+        for (Book b : books) {  
+            if (b.id.equals(id)) { 
+                books.remove(b); 
                 bookTitles.remove(b.title);
                 actionHistory.push("Deleted book: " + b.title);
                 System.out.println("Book deleted!");
@@ -64,8 +64,8 @@ public class Library {
     }
 
     // ➤ ADD BORROWER
-    public void addBorrower(String borrower) {
-        if (!borrowRecords.containsKey(borrower)) {
+    public void addBorrower(String borrower) { 
+        if (!borrowRecords.containsKey(borrower)) { 
             borrowRecords.put(borrower, new LinkedList<>());
             System.out.println("Borrower registered!");
         } else {
@@ -123,6 +123,18 @@ public class Library {
             for (Book b : borrowRecords.get(borrower)) {
                 System.out.println(" - " + b.title);
             }
+        }
+    }
+    
+    // ➤ VIEW ACTIVITY LOG
+        public void viewActivityLog() {
+        System.out.println("\n===== ACTIVITY LOG =====");
+        if (actionHistory.isEmpty()) {
+            System.out.println("No recorded activities yet.");
+            return;
+        }
+        for (String action : actionHistory) {
+            System.out.println("• " + action);
         }
     }
 }
